@@ -204,7 +204,7 @@ func (s *ServerGroup) ApplyConfig(cfg *Config) error {
 	// Override the dial timeout
 	switch transport := client.Transport.(type) {
 	case *http.Transport:
-		transport.DialContext = (&net.Dialer{Timeout: 200 * time.Millisecond}).DialContext
+		transport.DialContext = (&net.Dialer{Timeout: 500 * time.Millisecond}).DialContext
 		// TODO: basic auth?  as reported in #70 basicAuth doesn't use this timeout.
 		// This is because prometheus has its own RoundTripper (*config.basicAuthRoundTripper)
 		// which doesn't set a timeout or expose a way to do so. For now I'm changing
